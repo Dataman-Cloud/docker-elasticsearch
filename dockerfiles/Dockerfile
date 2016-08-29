@@ -1,0 +1,33 @@
+# Pull base image.
+FROM demoregistry.dataman-inc.com/library/centos7-jdk8:latest
+
+MAINTAINER Jinye Liu "jyliu@dataman-inc.com"
+
+ENV ES_PKG_NAME=elasticsearch-1.4.5
+ENV ES_HOME=/usr/share/elasticsearch
+ENV PATH=$ES_HOME/bin:$PATH
+ENV CLUSTER_NAME=escluster
+
+# Install Elasticsearch
+RUN curl -o $ES_PKG_NAME.tar.gz https://download.elasticsearch.org/elasticsearch/elasticsearch/$ES_PKG_NAME.tar.gz && tar xzf $ES_PKG_NAME.tar.gz -C /usr/share/
+#ADD $ES_PKG_NAME.tar.gz /usr/share/
+RUN mv /usr/share/$ES_PKG_NAME /usr/share/elasticsearch
+COPY configs/ /usr/share/elasticsearch/
+
+RUN curl -o configs.tar.gz http://10.3.10.33/config/elasticsearch/configs.tar.gz && tar xzvf configs.tar.gz -C /usr/share/elasticsearch/ && rm -f configs.tar.gz
+
+# Define working directory.
+WORKDIR  /usr/share/elasticsearch
+
+# download shurenyun scripts
+COPY entrypoint.sh /
+
+
+# Expose ports.
+#   - 9200: HTTP
+#   - 9300: transport
+EXPOSE 9200
+EXPOSE 9300
+# Define default command.
+ENTRYPOINT ["/entrypoint.sh"]
+
