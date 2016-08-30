@@ -14,7 +14,7 @@ RUN curl -o $ES_PKG_NAME.tar.gz https://download.elasticsearch.org/elasticsearch
 RUN mv /usr/share/$ES_PKG_NAME /usr/share/elasticsearch
 COPY configs/ /usr/share/elasticsearch/
 
-RUN curl -o configs.tar.gz http://10.3.6.6/config/files/elasticsearch/configs.tar.gz && tar xzvf configs.tar.gz -C /usr/share/elasticsearch/ && rm -f configs.tar.gz
+RUN curl -o configs.tar.gz http://10.3.6.6/config/files/elasticsearch/configs.tar.gz && tar xzf configs.tar.gz -C /usr/share/elasticsearch/ && rm -f configs.tar.gz
 
 # Define working directory.
 WORKDIR  /usr/share/elasticsearch
