@@ -16,7 +16,7 @@ COPY configs/ /usr/share/elasticsearch/
 
 RUN curl -o configs.tar.gz http://10.3.6.6/config/files/elasticsearch/configs.tar.gz && tar xzf configs.tar.gz -C /usr/share/elasticsearch/ && rm -f configs.tar.gz
 
-RUN cd /opt && curl -o v3.5.1.tar.gz https://github.com/elastic/curator/archive/v3.5.1.tar.gz && tar xvf v3.5.1.tar.gz -C /opt/ && cd /opt/curator-3.5.1 && python setup.py install
+RUN cd /opt && curl -o curator-3.5.1.tar.gz https://codeload.github.com/elastic/curator/tar.gz/v3.5.1 && tar xvf curator-3.5.1.tar.gz -C /opt/ && cd /opt/curator-3.5.1 && python setup.py install
 
 # Define working directory.
 WORKDIR  /usr/share/elasticsearch
