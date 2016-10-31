@@ -2,8 +2,8 @@
 /filedownload.sh
 
 CLUSTER_NAME=${CLUSTER_NAME:-escluster}
-DATA_PATH=${CLUSTER_NAME:-/data/app/elasticseaerch}
-LOGS_PATH=${CLUSTER_NAME:-/data/log/elasticsearch}
+DATA_PATH=${DATA_PATH:-/data/app/elasticseaerch}
+LOGS_PATH=${LOGS_PATH:-/data/log/elasticsearch}
 TRANSPORT_TCP_PORT=${TRANSPORT_TCP_PORT:-9300}
 HTTP_PORT=${HTTP_PORT:-9200}
 
