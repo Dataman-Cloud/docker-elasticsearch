@@ -5,4 +5,4 @@ docker run -d --name es \
   -e CLUSTERNAME=escluster \
   -e HOSTNAME=$(hostname -s) \
   -e ES_HEAP_SIZE="512m" \
-  centos7-jdk8-elasticsearch-2.4.1
+  centos7-jdk8-elasticsearch-1.4.5

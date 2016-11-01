@@ -3,7 +3,7 @@ FROM demoregistry.dataman-inc.com/library/centos7-jdk8:latest
 
 MAINTAINER Jinye Liu "jyliu@dataman-inc.com"
 
-ENV ES_PKG_NAME=elasticsearch-2.4.1
+ENV ES_PKG_NAME=elasticsearch-1.4.5
 ENV ES_HOME=/usr/share/elasticsearch
 ENV PATH=$ES_HOME/bin:$PATH
 ENV CLUSTER_NAME=escluster
@@ -14,9 +14,9 @@ RUN curl -o $ES_PKG_NAME.tar.gz https://download.elasticsearch.org/elasticsearch
 RUN mv /usr/share/$ES_PKG_NAME /usr/share/elasticsearch
 COPY configs/ /usr/share/elasticsearch/
 
-RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
+RUN curl -o configs.tar.gz http://10.3.6.6/config/files/elasticsearch/configs.tar.gz && tar xzf configs.tar.gz -C /usr/share/elasticsearch/ && rm -f configs.tar.gz
 
-RUN yum install -y python-pip && yum clean all && pip --no-cache-dir install elasticsearch-curator
+RUN yum install -y python-pip && yum clean all && pip --no-cache-dir install elasticsearch-curator==3.5.1
 
 # Define working directory.
 WORKDIR  /usr/share/elasticsearch
