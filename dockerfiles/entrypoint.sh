@@ -15,4 +15,4 @@ sed -i 's@--LOGS_PATH--@'$LOGS_PATH'@g' elasticsearch.yml
 sed -i 's@--TRANSPORT_TCP_PORT--@'$TRANSPORT_TCP_PORT'@g' elasticsearch.yml
 sed -i 's@--HTTP_PORT--@'$HTTP_PORT'@g' elasticsearch.yml
 
-/usr/share/elasticsearch/bin/elasticsearch
+/usr/share/elasticsearch/bin/elasticsearch -Des.insecure.allow.root=true
