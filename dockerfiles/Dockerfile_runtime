@@ -3,13 +3,14 @@ FROM demoregistry.dataman-inc.com/library/centos7-jdk8:latest
 
 MAINTAINER Jinye Liu "jyliu@dataman-inc.com"
 
-ENV ES_PKG_NAME=elasticsearch-2.4.1
+ENV ES_VERSION=2.4.1
+ENV ES_PKG_NAME=elasticsearch-$ES_VERSION
 ENV ES_HOME=/usr/share/elasticsearch
 ENV PATH=$ES_HOME/bin:$PATH
 ENV CLUSTER_NAME=escluster
 
 # Install Elasticsearch
-RUN curl -o $ES_PKG_NAME.tar.gz https://download.elasticsearch.org/elasticsearch/elasticsearch/$ES_PKG_NAME.tar.gz && tar xzf $ES_PKG_NAME.tar.gz -C /usr/share/
+RUN curl -o $ES_PKG_NAME.tar.gz https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/$ES_VERSION/$ES_PKG_NAME.tar.gz && tar xzf $ES_PKG_NAME.tar.gz -C /usr/share/
 #ADD $ES_PKG_NAME.tar.gz /usr/share/
 RUN mv /usr/share/$ES_PKG_NAME /usr/share/elasticsearch
 COPY configs/ /usr/share/elasticsearch/
