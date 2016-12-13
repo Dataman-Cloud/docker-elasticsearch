@@ -7,6 +7,7 @@ LOGS_PATH=${LOGS_PATH:-/data/log/elasticsearch}
 TRANSPORT_TCP_PORT=${TRANSPORT_TCP_PORT:-9300}
 HTTP_PORT=${HTTP_PORT:-9200}
 NETWORK_HOST=${NETWORK_HOST:-0.0.0.0}
+NUMBER_OF_REPLICAS=${NUMBER_OF_REPLICAS:-1}
 
 cd /usr/share/elasticsearch/config
 cp -f elasticsearch.yml.template elasticsearch.yml
@@ -16,5 +17,6 @@ sed -i 's@--LOGS_PATH--@'$LOGS_PATH'@g' elasticsearch.yml
 sed -i 's@--TRANSPORT_TCP_PORT--@'$TRANSPORT_TCP_PORT'@g' elasticsearch.yml
 sed -i 's@--HTTP_PORT--@'$HTTP_PORT'@g' elasticsearch.yml
 sed -i 's@--NETWORK_HOST--@'$NETWORK_HOST'@g' elasticsearch.yml
+sed -i 's@--NUMBER_OF_REPLICAS--@'$NUMBER_OF_REPLICAS'@g' elasticsearch.yml
 
 /usr/share/elasticsearch/bin/elasticsearch -Des.insecure.allow.root=true
