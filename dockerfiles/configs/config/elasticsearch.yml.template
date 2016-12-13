@@ -102,3 +102,5 @@ transport.tcp.port: --TRANSPORT_TCP_PORT--
 # Require explicit names when deleting indices:
 #
 # action.destructive_requires_name: true
+
+index.number_of_replicas: --NUMBER_OF_REPLICAS--

@@ -16,6 +16,7 @@ RUN mv /usr/share/$ES_PKG_NAME /usr/share/elasticsearch
 COPY configs/ /usr/share/elasticsearch/
 
 RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
+RUN /usr/share/elasticsearch/bin/plugin install discovery-multicast
 
 RUN yum install -y python-pip && yum clean all && pip --no-cache-dir install elasticsearch-curator
 
