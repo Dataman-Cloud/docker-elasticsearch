@@ -19,7 +19,7 @@ RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head && \
 	/usr/share/elasticsearch/bin/plugin install license && \
 	/usr/share/elasticsearch/bin/plugin install marvel-agent
 
-RUN yum install -y python-pip && yum clean all && pip --no-cache-dir install elasticsearch-curator
+RUN yum install -y python-pip && yum clean all && pip --no-cache-dir install elasticsearch-curator==3.5.1
 
 # Define working directory.
 WORKDIR  /usr/share/elasticsearch
