@@ -15,8 +15,9 @@ RUN curl -o $ES_PKG_NAME.tar.gz https://download.elasticsearch.org/elasticsearch
 RUN mv /usr/share/$ES_PKG_NAME /usr/share/elasticsearch
 COPY configs/ /usr/share/elasticsearch/
 
-RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
-RUN /usr/share/elasticsearch/bin/plugin install discovery-multicast
+RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head && \
+	/usr/share/elasticsearch/bin/plugin install license && \
+	/usr/share/elasticsearch/bin/plugin install marvel-agent
 
 RUN yum install -y python-pip && yum clean all && pip --no-cache-dir install elasticsearch-curator
 
